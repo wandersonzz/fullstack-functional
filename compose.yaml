@@ -1,12 +1,23 @@
 version: "3.9"
 
+
 services:
+  backend:
+    container_name: backend
+    image: backend
+    build:
+      context: ./backend
+      dockerfile: backend.dockerfile
+    ports:
+      - 4000:4000
+    environment:
+      - DATABASE_URL=postgresql://postgres:dezenove@db:5432/db_teste?schema=public
   db:
-    container_name: db
-    image: postgres:12
+    container_name: db-postgres
+    image: postgres:latest
     restart: always
     environment:
-      POSTGRES_USER: root
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: dezenove
       POSTGRES_DB: postgres
     ports:

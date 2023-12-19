@@ -1,8 +1,9 @@
 import express from 'express'
-import { PrismaClient } from '@prisma/client/edge'
+import { PrismaClient } from '@prisma/client'
 
 
 const prisma = new PrismaClient();
+
 const app = express();
 
 //json
@@ -22,7 +23,7 @@ app.use((req, res, next) => {
 app.get('/test', (req, res) => {
     try {
         res.status(200).json({
-            message: 'API is working'
+            message: 'API teste aqui'
         })
     } catch (error) {
         res.status(500).json({
